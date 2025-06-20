@@ -40,7 +40,7 @@ object AppModule {
     @Singleton
     fun provideAuthApi(): AuthApi {
         return Retrofit.Builder()
-            .baseUrl("https://508b-2001-fb1-bc-2d71-71df-f42b-2cdf-205.ngrok-free.app/api/")
+            .baseUrl("https://9cdd-2001-fb1-bc-2d71-71df-f42b-2cdf-205.ngrok-free.app/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(AuthApi::class.java)

@@ -11,6 +11,6 @@ interface AuthApi {
     @POST("auth/register")
     suspend fun register(@Body body: RegisterDto) : ApiResponseDto<AuthResponse>
 
-    @POST("login")
+    @POST("auth/login")
     suspend fun login(@Body body: LoginDto) : ApiResponseDto<AuthResponse>
 }

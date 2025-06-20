@@ -14,13 +14,26 @@ import javax.inject.Inject
 class AuthRepositoryImpl @Inject constructor(
     private val api: AuthApi,
 ) : AuthRepository {
-    override suspend fun register(username: String, email: String, password: String, confirmPassword: String): ApiResponseDto<AuthResponse> {
+    override suspend fun register(
+        username: String,
+        email: String,
+        password: String,
+        confirmPassword: String
+    ): ApiResponseDto<AuthResponse> {
         return try {
-            val response = api.register(RegisterDto(username, email, password, confirmPassword))
+            Log.d("API_REGISTER", "Calling register() with: $username, $email")
+
+            val request = RegisterDto(username, email, password, confirmPassword)
+            val response = api.register(request)
+
+            Log.d("API_REGISTER", "Received response: status=${response}")
+
             response
         } catch (e: Exception) {
+            Log.e("API_REGISTER", "Exception: ${e.localizedMessage}", e)
+
             ApiResponseDto(
-                statusCode = ApiStatus.ERROR,
+                statusCode = ApiStatus.ERROR.code,
                 message = "Something went wrong!",
                 data = AuthResponse(
                     token = "",
@@ -37,13 +50,19 @@ class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun login(email: String, password: String): ApiResponseDto<AuthResponse> {
         return try {
-            val response = api.login(LoginDto(email, password))
-            Log.d("NO", "SUCC ${response}")
+            Log.d("API_LOGIN", "Calling login() with: $email")
+
+            val request = LoginDto(email, password)
+            val response = api.login(request)
+
+            Log.d("API_LOGIN", "Received response: ${response}")
+
             response
         } catch (e: Exception) {
-            Log.d("ERR", "Fail")
+            Log.e("API_LOGIN", "Exception: ${e.localizedMessage}", e)
+
             ApiResponseDto(
-                statusCode = ApiStatus.ERROR,
+                statusCode = ApiStatus.ERROR.code,
                 message = "Something went wrong!",
                 data = AuthResponse(
                     token = "",

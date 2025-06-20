@@ -1,7 +1,7 @@
 package com.jenny.mealmate.util
 
 enum class ApiStatus(val code: Int) {
-    SUCCESS(300),
+    SUCCESS(200),
     FAIL(400),
     ERROR(500);
 

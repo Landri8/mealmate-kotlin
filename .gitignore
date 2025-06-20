@@ -1,15 +1,60 @@
-*.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+# ========== OS-SPECIFIC FILES ==========
+
+# macOS
 .DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
-local.properties
+
+# Windows
+Thumbs.db
+
+# ========== IDE FILES (Android Studio / IntelliJ) ==========
+*.iml
+.idea/
+.idea/caches
+.idea/libraries
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+
+# ========== BUILD OUTPUT ==========
+/build/
+/app/build/
+/captures/
+/.externalNativeBuild/
+/.cxx/
+
+# ========== GRADLE ==========
+.gradle/
+/local.properties
+
+# ========== KOTLIN SPECIFIC ==========
+*.class
+*.jar
+*.war
+*.ear
+
+# ========== LOG FILES ==========
+*.log
+
+# ========== LINT / ANALYSIS ==========
+/lint/reports/
+/lint/tmp/
+
+# ========== APK / AAB / NDK ARTIFACTS ==========
+*.apk
+*.ap_
+*.aab
+*.so
+
+# ========== OTHER ==========
+*.swp
+*.swo
+
+# ========== KEEP THESE IN GIT (DO NOT IGNORE!) ==========
+# Make sure these are NOT listed above!
+# gradlew
+# gradlew.bat
+# gradle/wrapper/gradle-wrapper.properties
+# gradle/wrapper/gradle-wrapper.jar
+# settings.gradle(.kts)
+# build.gradle(.kts)

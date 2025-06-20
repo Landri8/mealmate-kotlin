@@ -46,8 +46,8 @@ fun NavGraph(
                         }
                     },
                     onNavigateToRegister = {
-                        navController.navigate(Route.RegisterScreen.route) {
-                            popUpTo(Route.LoginScreen.route) { inclusive = true }
+                        navController.navigate(Route.HomeScreen.route) {
+                            popUpTo(Route.AuthNavigation.route) { inclusive = true }
                             launchSingleTop = true
                         }
                     }
@@ -60,7 +60,7 @@ fun NavGraph(
                 RegisterScreen(
                     onNavigateToHome = {
                         navController.navigate(Route.HomeScreen.route) {
-                            popUpTo(Route.RegisterScreen.route) { inclusive = true }
+                            popUpTo(Route.AuthNavigation.route) { inclusive = true }
                             launchSingleTop = true
                         }
                     },

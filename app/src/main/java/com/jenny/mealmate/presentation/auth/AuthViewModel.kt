@@ -72,8 +72,8 @@ class AuthViewModel @Inject constructor(
             try {
                 val result = registerUseCase(state.username, state.email, state.password, state.confirmPassword)
 
-                if (result.statusCode == ApiStatus.FAIL || result.statusCode == ApiStatus.ERROR) {
-                    clearForm()
+                if (result.statusCode == ApiStatus.FAIL.code || result.statusCode == ApiStatus.ERROR.code) {
+//                  clearForm()
                     Toaster.show(result.message)
                 } else {
                     val responseData = result.data
@@ -122,7 +122,7 @@ class AuthViewModel @Inject constructor(
             try {
                 val result = loginUseCase(state.email, state.password)
 
-                if (result.statusCode == ApiStatus.FAIL || result.statusCode == ApiStatus.ERROR) {
+                if (result.statusCode == ApiStatus.FAIL.code || result.statusCode == ApiStatus.ERROR.code) {
                     clearForm()
                     Toaster.show(result.message)
                 } else {
