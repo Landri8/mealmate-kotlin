@@ -8,6 +8,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.jenny.mealmate.domain.manager.LocalUserManager
+import com.jenny.mealmate.domain.model.User
 import com.jenny.mealmate.util.Constants
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -42,8 +43,25 @@ class LocalUserManagerImpl(
     }
 
     override suspend fun clearUserAuth() {
-        context.dataStore.edit { it.clear() }
+        context.dataStore.edit { prefs ->
+            prefs.remove(PreferencesKeys.USER_ID)
+            prefs.remove(PreferencesKeys.USER_NAME)
+            prefs.remove(PreferencesKeys.USER_CREATED_AT)
+            prefs.remove(PreferencesKeys.USER_EMAIL)
+            prefs.remove(PreferencesKeys.USER_TOKEN)
+        }
     }
+
+    override fun readUser(): Flow<User> =
+        context.dataStore.data.map { prefs ->
+            User(
+                id        = prefs[PreferencesKeys.USER_ID]        .orEmpty(),
+                name      = prefs[PreferencesKeys.USER_NAME]      .orEmpty(),
+                email     = prefs[PreferencesKeys.USER_EMAIL]     .orEmpty(),
+                token     = prefs[PreferencesKeys.USER_TOKEN]     .orEmpty(),
+                createdAt = prefs[PreferencesKeys.USER_CREATED_AT].orEmpty()
+            )
+        }
 }
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = Constants.USER_SETTINGS_PREF)

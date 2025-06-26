@@ -8,7 +8,9 @@ sealed class Route (
     object LoginScreen: Route(route = "loginScreen")
     object RegisterScreen: Route(route = "registerScreen")
     object RecipeDetailScreen: Route(route = "recipeDetailScreen")
-    object CreateRecipeScreen: Route(route = "createRecipeScreen")
+    object CreateOrEditRecipe : Route("createRecipeScreen")
+    object BookmarkScreen : Route("bookmarkScreen")
+    object ProfileScreen : Route("profileScreen")
 
     object AppStartNavigation: Route(route = "appStartNavigation")
     object AuthNavigation: Route(route = "authNavigation")

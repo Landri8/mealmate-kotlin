@@ -6,7 +6,6 @@ import com.jenny.mealmate.data.remote.dto.ApiResponseDto
 import com.jenny.mealmate.data.remote.dto.AuthResponse
 import com.jenny.mealmate.data.remote.dto.LoginDto
 import com.jenny.mealmate.data.remote.dto.RegisterDto
-import com.jenny.mealmate.data.remote.dto.UserDto
 import com.jenny.mealmate.domain.repository.AuthRepository
 import com.jenny.mealmate.util.ApiStatus
 import javax.inject.Inject
@@ -35,15 +34,7 @@ class AuthRepositoryImpl @Inject constructor(
             ApiResponseDto(
                 statusCode = ApiStatus.ERROR.code,
                 message = "Something went wrong!",
-                data = AuthResponse(
-                    token = "",
-                    user = UserDto(
-                        id = "",
-                        name = "",
-                        email = "",
-                        createdAt = ""
-                    )
-                )
+                data = null
             )
         }
     }
@@ -64,15 +55,7 @@ class AuthRepositoryImpl @Inject constructor(
             ApiResponseDto(
                 statusCode = ApiStatus.ERROR.code,
                 message = "Something went wrong!",
-                data = AuthResponse(
-                    token = "",
-                    user = UserDto(
-                        id = "",
-                        name = "",
-                        email = "",
-                        createdAt = ""
-                    )
-                )
+                data = null
             )
         }
     }

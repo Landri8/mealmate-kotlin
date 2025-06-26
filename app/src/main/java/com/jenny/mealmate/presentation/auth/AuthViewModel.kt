@@ -75,7 +75,7 @@ class AuthViewModel @Inject constructor(
                 if (result.statusCode == ApiStatus.FAIL.code || result.statusCode == ApiStatus.ERROR.code) {
 //                  clearForm()
                     Toaster.show(result.message)
-                } else {
+                } else if (result.data != null) {
                     val responseData = result.data
                     localUserManager.saveUserAuth(
                         id = responseData.user.id,
@@ -125,7 +125,7 @@ class AuthViewModel @Inject constructor(
                 if (result.statusCode == ApiStatus.FAIL.code || result.statusCode == ApiStatus.ERROR.code) {
                     clearForm()
                     Toaster.show(result.message)
-                } else {
+                } else if (result.data != null) {
                     val responseData = result.data
                     localUserManager.saveUserAuth(
                         id = responseData.user.id,
